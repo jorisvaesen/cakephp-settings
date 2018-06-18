@@ -2,7 +2,6 @@
 namespace JorisVaesen\Settings\Shell;
 
 use Cake\Console\Shell;
-use Cake\I18n\FrozenTime;
 use Cake\ORM\TableRegistry;
 
 class CreateShell extends Shell
@@ -18,7 +17,7 @@ class CreateShell extends Shell
     {
         $this->out('Please enter the following properties');
 
-        $settingsTable = TableRegistry::getTableLocator()->get('Settings.Settings');
+        $settingsTable = TableRegistry::getTableLocator()->get('JorisVaesen/Settings.Settings');
         $setting = $settingsTable->newEntity();
 
         $fields = [
@@ -33,12 +32,6 @@ class CreateShell extends Shell
             $value = $this->in($field . ' ('. $help .'):');
             $setting->set($field, $value, ['guard' => false]);
         }
-
-        $now = FrozenTime::now();
-        $setting->set([
-            'created' => $now,
-            'modified' => $now,
-        ]);
 
         if ($settingsTable->save($setting)) {
             $this->success('Setting saved.');

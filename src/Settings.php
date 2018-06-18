@@ -9,7 +9,7 @@ class Settings
     public static function read($name)
     {
         return Cache::remember($name, function () use ($name) {
-            $s = TableRegistry::getTableLocator()->get('Settings.Settings')
+            $s = TableRegistry::getTableLocator()->get('JorisVaesen/Settings.Settings')
                 ->find()
                 ->select(['Settings.value'])
                 ->where([

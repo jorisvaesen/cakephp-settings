@@ -1,5 +1,5 @@
 <?php
-namespace DatrixCms\Model\Table;
+namespace JorisVaesen\Settings\Model\Table;
 
 use ArrayObject;
 use Cake\Cache\Cache;
@@ -39,6 +39,7 @@ class SettingsTable extends Table
         $this->setTable('settings');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+        $this->setEntityClass(Setting::class);
 
         $this->addBehavior('Timestamp');
     }
@@ -69,6 +70,16 @@ class SettingsTable extends Table
             ->where([
                 'Settings.name' => $name,
             ]);
+    }
+
+    public function write($name, $value)
+    {
+        $entity = $this->find('name', compact('name'))
+            ->firstOrFail();
+
+        $entity->set(compact('value'));
+
+        return $this->save($entity);
     }
 
     public function afterSave(Event $event, Setting $entity, ArrayObject $options)

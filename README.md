@@ -41,7 +41,13 @@ echo Settings::read($name);
 Write setting
 
 ```php
-$settingsTable = TableRegistry::getTableLocator()->get('Settings.Settings')
-    ->find('name', ['name' => 'SETTING_NAME'])
-    ->first();
+// Using simple find and update
+$settingsTable = TableRegistry::getTableLocator()->get('JorisVaesen/Settings.Settings');
+$setting = $settingsTable->find('name', ['name' => 'SETTING_NAME'])->first();
+$setting->set('value', 'NEW VALUE');
+$settingsTable->save($setting);
+
+// Write method
+TableRegistry::getTableLocator()->get('JorisVaesen/Settings.Settings')
+    ->write('NAME', 'NEW_VALUE');
 ```
