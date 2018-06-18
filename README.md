@@ -16,12 +16,18 @@ Enable plugin:
 bin/cake plugin load -b JorisVaesen/Settings
 ```
 
+Migrate settings table
+
+```
+bin/cake migrations migrate -p JorisVaesen/Settings
+```
+
 ## Usage
 
 Create setting
 
 ```
-bin/cake Settings create
+bin/cake joris_vaesen/settings.create
 ```
 
 Read setting
