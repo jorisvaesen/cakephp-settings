@@ -1,5 +1,5 @@
 {
-    "name": "jorisvaesen/cakephp-setttings",
+    "name": "jorisvaesen/cakephp-settings",
     "description": "Read and write settings for CakePHP apps",
     "type": "cakephp-plugin",
     "keywords": ["cakephp", "settings"],
