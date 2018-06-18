@@ -1,0 +1,30 @@
+{
+    "name": "jorisvaesen/cakephp-setttings",
+    "description": "Read and write settings for CakePHP apps",
+    "type": "cakephp-plugin",
+    "keywords": ["cakephp", "settings"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joris Vaesen",
+            "role": "Author"
+        }
+    ],
+    "require": {
+        "cakephp/cakephp": "^3.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "cakephp/cakephp-codesniffer": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JorisVaesen\\Settings\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JorisVaesen\\Settings\\Test\\": "tests"
+        }
+    }
+}
