@@ -41,5 +41,7 @@ echo Settings::read($name);
 Write setting
 
 ```php
-$settingsTable = TableRegistry::getTableLocator()->get('Settings.Settings')->find('name', ['name' => 'SETTING_NAME']);
+$settingsTable = TableRegistry::getTableLocator()->get('Settings.Settings')
+    ->find('name', ['name' => 'SETTING_NAME'])
+    ->first();
 ```
