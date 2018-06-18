@@ -2,6 +2,7 @@
 namespace JorisVaesen\Settings\Shell;
 
 use Cake\Console\Shell;
+use Cake\I18n\FrozenTime;
 use Cake\ORM\TableRegistry;
 
 class CreateShell extends Shell
@@ -27,14 +28,17 @@ class CreateShell extends Shell
             'help' => 'help text visible under the input control',
             'value' => 'default value',
         ];
-        $data = [];
 
         foreach ($fields as $field => $help) {
             $value = $this->in($field . ' ('. $help .'):');
-            $data[$field] = $value;
+            $setting->set($field, $value, ['guard' => false]);
         }
 
-        $setting = $settingsTable->patchEntity($setting, $data);
+        $now = FrozenTime::now();
+        $setting->set([
+            'created' => $now,
+            'modified' => $now,
+        ]);
 
         if ($settingsTable->save($setting)) {
             $this->success('Setting saved.');
